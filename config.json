@@ -1,0 +1,6 @@
+{
+    "kafka_server" : "kafka1.alerce.online:9092",
+    "group" : "download",
+    "working_dir" : "/tmp",
+    "output_bucket" : "s3://ztf-avros"
+}
