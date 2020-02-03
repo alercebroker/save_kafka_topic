@@ -9,7 +9,9 @@ import os
 
 def service():
 
-    logger = logging.getLogger(__name__)
+    logging.basicConfig(level=logging.DEBUG)
+    logger = logging.getLogger("MAIN")
+
 
     #READ CONFIG
     infile = open('/app/config.json','r')
@@ -27,7 +29,7 @@ def service():
     group = '%s_%s' %( config['group'], date_str )
     output_path = os.path.join(config['working_dir'],topic)
     avro_directory = output_path
-    command = 'python3 /app/scripts/download_topic.py %s %s %s %s %s' % ( 
+    command = 'python3 /app/scripts/download_topic.py %s %s %s %s' % ( 
                                                             config['kafka_server'],
                                                             topic,
                                                             output_path,
@@ -57,7 +59,8 @@ def service():
     shutil.rmtree(concat_directory)
 
 
-schedule.every().day.at("16:00").do(service)
+service()
+schedule.every().day.at("15:55").do(service)
 while True:
     schedule.run_pending()
     time.sleep(3600)

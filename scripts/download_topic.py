@@ -4,8 +4,12 @@ import traceback
 import numpy as np
 import sys
 import io
+import logging
 from confluent_kafka import Consumer, KafkaError, TopicPartition
 from multiprocessing import Pool
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger("DOWNLOADING")
 
 def consume(param):
 
@@ -40,7 +44,6 @@ def consume(param):
         data = reader.next()        
         candid = data['candid']
         candid_str = str(candid)
-        print(candid_str)
 
         try:
             output_path = os.path.join(output_dir,"%s.avro"%(candid_str) )
@@ -48,7 +51,7 @@ def consume(param):
             outfile.write(bytes_alert)
             outfile.close()
         except:
-            print("error %s" % (candid_str) )
+            logger.error("error %s" % (candid_str) )
             traceback.print_exc()
 
 
