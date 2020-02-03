@@ -1,2 +1,2 @@
-numpy
-schedule
+numpy       == 1.17.2
+schedule    == 0.6.0

@@ -5,6 +5,7 @@ import json
 import shutil
 import schedule
 import time
+import os
 
 def service():
 
@@ -32,7 +33,7 @@ def service():
                                                             output_path,
                                                             group
               )
-    logger.info("DOWNLOADING topic %s from %s" % (topic,config['kafka_server'])
+    logger.info("DOWNLOADING topic %s from %s" % (topic,config['kafka_server']) )
     os.system(command)
 
     #CONCAT
