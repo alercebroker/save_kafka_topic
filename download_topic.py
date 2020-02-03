@@ -9,13 +9,14 @@ from multiprocessing import Pool
 
 def consume(param):
 
-    topic      = param[0]
-    partition  = int(param[1])
-    output_dir = param[2]
-    group      = param[3]
+    kafka_server   = param[1]
+    topic          = param[2]
+    partition      = int(param[3])
+    output_dir     = param[4]
+    group          = param[5]
 
     c = Consumer({
-        'bootstrap.servers': 'kafka1.alerce.online:9092',
+        'bootstrap.servers': kafka_server,
         'group.id': group,
         'auto.offset.reset': 'earliest'
     })
@@ -58,11 +59,14 @@ n = 16
 pool = Pool(n)
 params = []
 
-topic      = sys.argv[1]
-output_dir = sys.argv[2]
-group      = sys.argv[3]
+kafka_server = sys.argv[1]
+topic        = sys.argv[2]
+output_dir   = sys.argv[3]
+group        = sys.argv[4]
+
+os.mkdir(output_dir)
 
 for i in range(n):
-    params.append( [topic,i,output_dir,group] )
+    params.append( [kafka_server,topic,i,output_dir,group] )
 
 pool.map(consume,params)
