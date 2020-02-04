@@ -25,8 +25,8 @@
 >```docker exec -it save_kafka_topic /bin/bash ```
 
 >  ```aws configure ``` <br/>
->   AWS Acess Key ID [None]: ID <br/>
->   AWS Secret Access Key [None]: XXX <br/>
+>   AWS Acess Key ID [None]: KEY <br/>
+>   AWS Secret Access Key [None]: PASSWORD <br/>
 >   Default region name [None]: <br/>
 >   Default output format [None]: <br/>
    
