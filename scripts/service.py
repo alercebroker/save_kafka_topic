@@ -61,4 +61,4 @@ infile.close()
 schedule.every().day.at(config['start_time']).do(service,config=config)
 while True:
     schedule.run_pending()
-    time.sleep(10)
+    time.sleep(3600)
