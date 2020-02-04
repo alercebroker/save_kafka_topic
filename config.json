@@ -3,5 +3,5 @@
     "group" : "download",
     "working_dir" : "/tmp",
     "output_bucket" : "s3://ztf-avro",
-    "start_time" : "14:00"
+    "start_time" : "14:10"
 }

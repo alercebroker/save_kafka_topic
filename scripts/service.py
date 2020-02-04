@@ -58,8 +58,7 @@ infile = open('/app/config.json','r')
 config = json.load(infile)
 infile.close()
 
-service(config)
-#schedule.every().day.at(config['start_time']).do(service,config=config)
-#while True:
-#    schedule.run_pending()
-#    time.sleep(10)
+schedule.every().day.at(config['start_time']).do(service,config=config)
+while True:
+    schedule.run_pending()
+    time.sleep(10)
