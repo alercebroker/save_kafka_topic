@@ -7,17 +7,12 @@ import schedule
 import time
 import os
 
-def service():
+def service(config):
 
     logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger("MAIN")
 
-
-    #READ CONFIG
-    infile = open('/app/config.json','r')
-    config = json.load(infile)
-    infile.close()
-
+        
     #DATE
     today     = datetime.date.today()
     delta     = datetime.timedelta(1)
@@ -58,9 +53,13 @@ def service():
     shutil.rmtree(avro_directory)
     shutil.rmtree(concat_directory)
 
+#READ CONFIG
+infile = open('/app/config.json','r')
+config = json.load(infile)
+infile.close()
 
-service()
-schedule.every().day.at("15:55").do(service)
-while True:
-    schedule.run_pending()
-    time.sleep(3600)
+service(config)
+#schedule.every().day.at(config['start_time']).do(service,config=config)
+#while True:
+#    schedule.run_pending()
+#    time.sleep(10)

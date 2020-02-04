@@ -1,2 +1,4 @@
-numpy       == 1.17.2
-schedule    == 0.6.0
+numpy           == 1.17.2
+schedule        == 0.6.0
+fastavro        == 0.21.18
+confluent_kafka == 0.11.6
