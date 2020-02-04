@@ -24,7 +24,7 @@
 3) **EXEC** Configure awscli key and password in order to upload data to S3 bucket 
 >```docker exec -it save_kafka_topic /bin/bash ```
 
->  ```aws configure ```
+>  ```aws configure ``` <br/>
 >   AWS Acess Key ID [None]: ID <br/>
 >   AWS Secret Access Key [None]: XXX <br/>
 >   Default region name [None]: <br/>
