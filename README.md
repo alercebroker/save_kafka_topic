@@ -18,11 +18,11 @@
 ## Deployment
 
 1) **BUILD** Build docker image:
-```docker build -t save_kafka_topic .```
+> ```docker build -t save_kafka_topic .```
 2) **RUN** Run docker container and specify HOST_WORKING_DIR where kafka's topic is going to be downloaded and processed
-```docker run --detach --restart=always -v HOST_WORKING_DIR:/tmp --name save_kafka_topic save_kafka_topic```
+>```docker run --detach --restart=always -v HOST_WORKING_DIR:/tmp --name save_kafka_topic save_kafka_topic```
 3) **EXEC** Configure awscli key and password in order to upload data to S3 bucket 
-```docker exec -it save_kafka_topic /bin/bash
+>```docker exec -it save_kafka_topic /bin/bash
    aws configure
    AWS Acess Key ID [None]: ID
    AWS Secret Access Key [None]: XXX
