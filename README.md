@@ -27,6 +27,8 @@ It use the preceding scripts in order: (1) download_topic.py , (2) concatenate_a
 
 ## Configuration
 
+You can change the configuration file **conf.json** containing the following parameters:
+
 + **kafka_server**: Kafka server domain name and port to ingest from (kafka1.alerce.online:9092)
 + **group**: Group name to identify Kafka's consumers (download)
 + **working_dir**: Working directory to download and process data (/tmp)
