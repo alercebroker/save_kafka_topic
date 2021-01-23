@@ -37,6 +37,8 @@ You can change the configuration file **conf.json** containing the following par
 
 ## Deployment
 
+Clone the repository, change to the directory and execute:
+
 1) **BUILD** Build docker image:
 > ```docker build -t save_kafka_topic .```
 2) **RUN** Run docker container and specify HOST_WORKING_DIR where kafka's topic is going to be downloaded and processed
