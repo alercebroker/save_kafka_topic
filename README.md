@@ -1,11 +1,29 @@
 # Save Kafka Topic
+Here we describe the **Save Kafka Topic** service. It is encapsulated in a Docker container and consists mainly of a series of scripts that are explained as following:
 
 ## Scripts
 
-1) **download_topic.py** Ingest a specific topic and save avro to local filesystem
-2) **concatenate_avros.py** Concatenate avro files into a few larger ones
-3) **upload_to_s3.py** Upload result to S3
-4) **service.py** Service driver, schedule to run scripts once every day
+1) **download_topic.py** Ingest a specific topic and save avro files to local filesystem
+
+```
+python3 download_topic.py KAFKA_SERVER KAFKA_TOPIC OUTPUT_DIR KAFKA_GROUP
+```
+
+2) **concatenate_avros.py** Concatenate avro files into a few larger ones of avro's chunks of 2200 of size each:
+
+```
+python3 concatenate_avros.py INPUT_DIRECTORY OUTPUT_DIRECTORY
+```
+
+3) **upload_to_s3.py** Upload result to an S3 bucket using aws command line program:
+
+```
+python3 upload_to_s3.py INPUT_DIR S3_BUCKET_PATH
+```
+
+4) **service.py** Service driver, schedule to run scripts once every day inside a Docker using a configuration file.
+It use the preceding scripts in order: (1) download_topic.py , (2) concatenate_avros.py and finally (3) upload_to_s3.py.
+
 
 ## Configuration
 
